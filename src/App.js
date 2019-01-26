@@ -18,7 +18,7 @@ class App extends Component {
 
     handleClick() {
         let c = makeCube();
-        c.move("R U R' U' R U R' U' R U R' U'");
+        c.move("F B R L U D");
         console.log(c);
     }
 }

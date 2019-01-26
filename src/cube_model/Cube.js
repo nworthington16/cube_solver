@@ -111,7 +111,7 @@ class Cube {
                 if (!ccw) {
                     let temp = this.yellow_face.left;
                     this.yellow_face.left = this.blue_face.right.reverse();
-                    this.blue_face.left = this.white_face.left.reverse();
+                    this.blue_face.right = this.white_face.left.reverse();
                     this.white_face.left = this.green_face.left;
                     this.green_face.left = temp;
                 } else {
