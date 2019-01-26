@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import Webcam from 'react-webcam';
+import makeCube from './cube_model/main';
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                {/* <Webcam /> */}
+                <div>
+                    <button onClick={this.handleClick}>Click here</button>
+                </div>
+            </div>
+        );
+    }
+
+    handleClick() {
+        let c = makeCube();
+        console.log(c);
+        c.rotateFace('white', false);
+        console.log(c);
+    }
 }
 
 export default App;
