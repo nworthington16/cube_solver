@@ -18,8 +18,8 @@ class App extends Component {
 
     handleClick() {
         let c = makeCube();
-        console.log(c);
-        c.rotateFace('white', false);
+        // console.log(c);
+        c.move("U R");
         console.log(c);
     }
 }

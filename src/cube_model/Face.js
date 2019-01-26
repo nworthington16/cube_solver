@@ -1,36 +1,98 @@
+import Square from "./Square";
+
 // import Row from './Row';
 
 class Face {
-    constructor(top, middle, bottom) {
-        this.top = top;
-        this.middle = middle;
-        this.bottom = bottom;
+    constructor(color) {
+        this.matrix = [
+            [new Square(color), new Square(color), new Square(color)],
+            [new Square(color), new Square(color), new Square(color)],
+            [new Square(color), new Square(color), new Square(color)]
+        ];
     }
 
     rotate = (ccw) => {
         if (!ccw) {
-            let newTop = [this.bottom[0], this.middle[0], this.top[0]];
-            let newMiddle = [this.bottom[1], this.middle[1], this.top[1]];
-            let newBottom = [this.bottom[2], this.middle[2], this.top[2]];
-            this.top = newTop;
-            this.middle = newMiddle;
-            this.bottom = newBottom;
+            let result = [];
+            for (let i = 0; i < this.matrix[0].length; i++) {
+                let row = this.matrix.map(e => e[i].reverse());
+                result.push(row);
+            }
+            this.matrix = result;
         } else {
-            let newTop = [this.top[2], this.middle[2], this.bottom[2]];
-            let newMiddle = [this.top[1], this.middle[1], this.bottom[1]];
-            let newBottom = [this.top[0], this.middle[0], this.bottom[0]];
-            this.top = newTop;
-            this.middle = newMiddle;
-            this.bottom = newBottom;
+            let result = [];
+            for (let i = 0; i < this.matrix[0].length; i++) {
+                let row = this.matrix.map(e => e[i]);
+                result.push(row);
+            }
+            this.matrix = result.reverse();
         }
     }
 
-    getCol = (col) => {
+    get top() {
+        return this.matrix[0];
+    }
+
+    get middle() {
+        return this.matrix[1];
+    }
+
+    get bottom() {
+        return this.matrix[2];
+    }
+
+    set top(row) {
+        this.matrix[0] = row;
+    }
+
+    set middle(row) {
+        this.matrix[1] = row;
+    }
+
+    set bottom(row) {
+        this.matrix[2] = row;
+    }
+
+    get left() {
         return [
-            this.top[col],
-            this.middle[col],
-            this.bottom[col]
+            this.matrix[0][0],
+            this.matrix[1][0],
+            this.matrix[2][0]
         ];
+    }
+
+    get center() {
+        return [
+            this.matrix[0][1],
+            this.matrix[1][1],
+            this.matrix[2][1]
+        ];
+    }
+
+    get right() {
+        return [
+            this.matrix[0][2],
+            this.matrix[1][2],
+            this.matrix[2][2]
+        ];
+    }
+
+    set left(col) {
+        this.matrix[0][0] = col[0];
+        this.matrix[1][0] = col[1];
+        this.matrix[2][0] = col[2];
+    }
+
+    set center(col) {
+        this.matrix[0][1] = col[0];
+        this.matrix[1][1] = col[1];
+        this.matrix[2][1] = col[2];
+    }
+
+    set right(col) {
+        this.matrix[0][2] = col[0];
+        this.matrix[1][2] = col[1];
+        this.matrix[2][2] = col[2];
     }
 }
 
