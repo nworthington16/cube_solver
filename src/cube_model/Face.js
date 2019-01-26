@@ -4,10 +4,15 @@ import Square from "./Square";
 
 class Face {
     constructor(color) {
+        // this.matrix = [
+        //     [new Square(color), new Square(color), new Square(color)],
+        //     [new Square(color), new Square(color), new Square(color)],
+        //     [new Square(color), new Square(color), new Square(color)]
+        // ];
         this.matrix = [
-            [new Square(color), new Square(color), new Square(color)],
-            [new Square(color), new Square(color), new Square(color)],
-            [new Square(color), new Square(color), new Square(color)]
+            [color, color, color],
+            [color, color, color],
+            [color, color, color]
         ];
     }
 
@@ -15,7 +20,7 @@ class Face {
         if (!ccw) {
             let result = [];
             for (let i = 0; i < this.matrix[0].length; i++) {
-                let row = this.matrix.map(e => e[i].reverse());
+                let row = this.matrix.map(e => e[i]).reverse();
                 result.push(row);
             }
             this.matrix = result;

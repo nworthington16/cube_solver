@@ -31,8 +31,8 @@ class Cube {
 
     move(sequence) {
         sequence = sequence.split(' ');
-        // console.log(sequence);
-        // console.log(moves[sequence[0]]);
+        console.log(sequence);
+        console.log(moves[sequence[0]]);
         // console.log(moves[sequence[1]]);
         // console.log(this);
         for (let i = 0; i < sequence.length; i++) {
@@ -46,16 +46,16 @@ class Cube {
                 this.white_face.rotate(ccw);
                 if (!ccw) {
                     let temp = this.green_face.bottom;
-                    this.green_face.bottom = this.orange_face.bottom;
-                    this.orange_face.bottom = this.blue_face.bottom;
-                    this.blue_face.bottom = this.red_face.bottom;
-                    this.red_face.bottom = temp;
-                } else {
-                    let temp = this.green_face.bottom;
                     this.green_face.bottom = this.red_face.bottom;
                     this.red_face.bottom = this.blue_face.bottom;
                     this.blue_face.bottom = this.orange_face.bottom;
                     this.orange_face.bottom = temp;
+                } else {
+                    let temp = this.green_face.bottom;
+                    this.green_face.bottom = this.orange_face.bottom;
+                    this.orange_face.bottom = this.blue_face.bottom;
+                    this.blue_face.bottom = this.red_face.bottom;
+                    this.red_face.bottom = temp;
                 }
                 break;
             case 'yellow':
@@ -78,64 +78,64 @@ class Cube {
                 this.green_face.rotate(ccw);
                 if (!ccw) {
                     let temp = this.yellow_face.bottom; 
-                    this.yellow_face.bottom = this.red_face.getCol(2).reverse();
-                    this.red_face.setCol(2, this.white_face.top);
-                    this.white_face.top = this.orange_face.getCol(0).reverse();
-                    this.orange_face.setCol(0, temp);
+                    this.yellow_face.bottom = this.red_face.right.reverse();
+                    this.red_face.right = this.white_face.top;
+                    this.white_face.top = this.orange_face.left.reverse();
+                    this.orange_face.left = temp;
                 } else {
                     let temp = this.yellow_face.top;
-                    this.yellow_face.bottom = this.orange_face.getCol(0);
-                    this.orange_face.setCol(0, this.white_face.top.reverse());
-                    this.white_face.top = this.red_face.getCol(2);
-                    this.red_face.setCol(2, temp.reverse());
+                    this.yellow_face.bottom = this.orange_face.left;
+                    this.orange_face.left = this.white_face.top.reverse();
+                    this.white_face.top = this.red_face.right ;
+                    this.red_face.right = temp.reverse();
                 }
                 break;
             case 'blue':
                 this.blue_face.rotate(ccw);
                 if (!ccw) {
                     let temp = this.yellow_face.top;
-                    this.yellow_face.top = this.orange_face.getCol(2);
-                    this.orange_face.setCol(2, this.white_face.bottom.reverse());
-                    this.white_face.bottom = this.red_face.getCol(0);
-                    this.red_face.setCol(0, temp.reverse());
+                    this.yellow_face.top = this.orange_face.right;
+                    this.orange_face.right = this.white_face.bottom.reverse();
+                    this.white_face.bottom = this.red_face.left;
+                    this.red_face.left = temp.reverse();
                 } else {
                     let temp = this.yellow_face.top;
-                    this.yellow_face.top = this.red_face.getCol(0).reverse();
-                    this.red_face.setCol(0, this.white_face.bottom);
-                    this.white_face.bottom = this.orange_face.getCol(2).reverse();
-                    this.orange_face.setCol(2, temp);
+                    this.yellow_face.top = this.red_face.left.reverse();
+                    this.red_face.left = this.white_face.bottom;
+                    this.white_face.bottom = this.orange_face.right.reverse();
+                    this.orange_face.right = temp;
                 }
                 break;
             case 'red':
                 this.red_face.rotate(ccw);
                 if (!ccw) {
-                    let temp = this.yellow_face.getCol(0);
-                    this.yellow_face.setCol(0, this.blue_face.getCol(2).reverse());
-                    this.blue_face.setCol(0, this.white_face.getCol(0).reverse());
-                    this.white_face.setCol(0, this.green_face.getCol(0));
-                    this.green_face.setCol(0, temp);
+                    let temp = this.yellow_face.left;
+                    this.yellow_face.left = this.blue_face.right.reverse();
+                    this.blue_face.left = this.white_face.left.reverse();
+                    this.white_face.left = this.green_face.left;
+                    this.green_face.left = temp;
                 } else {
-                    let temp = this.yellow_face.getCol(0);
-                    this.yellow_face.setCol(0, this.green_face.getCol(0));
-                    this.green_face.setCol(0, this.white_face.getCol(0));
-                    this.white_face.setCol(0, this.blue_face.getCol(2).reverse());
-                    this.blue_face.setCol(2, temp.reverse());
+                    let temp = this.yellow_face.left;
+                    this.yellow_face.left = this.green_face.left;
+                    this.green_face.left = this.white_face.left;
+                    this.white_face.left = this.blue_face.right.reverse();
+                    this.blue_face.right = temp.reverse();
                 }
                 break;
             case 'orange':
                 this.orange_face.rotate(ccw);
                 if (!ccw) {
-                    let temp = this.yellow_face.getCol(2);
-                    this.yellow_face.setCol(2, this.green_face.getCol(2));
-                    this.green_face.setCol(2, this.white_face.getCol(2));
-                    this.white_face.setCol(2, this.blue_face.getCol(0).reverse());
-                    this.blue_face.setCol(0, temp.reverse());
+                    let temp = this.yellow_face.right;
+                    this.yellow_face.right = this.green_face.right;
+                    this.green_face.right = this.white_face.right;
+                    this.white_face.right = this.blue_face.left.reverse();
+                    this.blue_face.left = temp.reverse();
                 } else {
-                    let temp = this.yellow_face.getCol(2);
-                    this.yellow_face.setCol(2, this.blue_face.getCol(0).reverse());
-                    this.blue_face.setCol(0, this.white_face.getCol(2).reverse());
-                    this.white_face.setCol(2, this.green_face.getCol(2));
-                    this.green_face.setCol(2, temp);
+                    let temp = this.yellow_face.right;
+                    this.yellow_face.right = this.blue_face.left.reverse();
+                    this.blue_face.left = this.white_face.right.reverse();
+                    this.white_face.right = this.green_face.right;
+                    this.green_face.right = temp;
                 }
                 break;
         }
